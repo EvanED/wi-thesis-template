@@ -302,6 +302,17 @@
 }
 
 
+\newtheoremstyle{indenteddefinition}
+   {\topsep}                           % above
+   {\topsep}                           % below
+   {\addtolength{\leftskip}{0.75in}    % body ``font''
+    \addtolength{\itemindent}{0.75in}} %
+   {}                                  % indent
+   {\bfseries}                         % head font
+   {.}                                 % head punct
+   {5pt plus 1pt minus 1pt}            % headspace
+   {}                                  % custom-head-spec
+
 %  Single counter for theorems and theorem-like environments:
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -313,7 +324,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 
-\theoremstyle{definition}
+\theoremstyle{indenteddefinition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 
