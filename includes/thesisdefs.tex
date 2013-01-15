@@ -303,17 +303,24 @@
 
 
 %  Single counter for theorems and theorem-like environments:
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{assertion}[theorem]{Assertion}
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
 \newtheorem{figger}[theorem]{Figure}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{plain}
 
 %=============================================================================
 % TABLE OF CONTENTS; LIST OF FIGURES; LIST OF TABLES
