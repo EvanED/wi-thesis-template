@@ -197,3 +197,35 @@
     \renewcommand{\bibsection}{\@memb@bsec}}{}
 }
 \makeatother
+
+
+\makechapterstyle{nohangell}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapnumfont}{\normalfont\HUGE\sffamily}
+  \renewcommand*{\chaptitlefont}{\normalfont\huge\sffamily}
+  \settowidth{\chapindent}{\chapnumfont 111}
+  \renewcommand*{\chapterheadstart}{\begingroup
+    \vspace*{\beforechapskip}%
+    \begin{adjustwidth}{}{}%
+    \hrulefill
+    \smash{\rule{0.4pt}{15mm}}
+    \end{adjustwidth}\endgroup}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \begin{adjustwidth}{}{}
+    \hfill
+    \raisebox{10mm}[0pt][0pt]{\chapnumfont \thechapter}%
+                              \hspace*{1em}
+    \end{adjustwidth}\vspace*{-3.0\onelineskip}}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \vskip\onelineskip
+    \raggedleft {\chaptitlefont ##1}\par\nobreak}}
+
+% \chapterstyle{deposit}
+% \chapterstyle{dash}
+% \chapterstyle{ell}
+% \chapterstyle{southall}
+\chapterstyle{nohangell}
+\pagestyle{deposit}
+
