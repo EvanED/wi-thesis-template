@@ -305,8 +305,7 @@
 \newtheoremstyle{indenteddefinition}
    {\topsep}                           % above
    {\topsep}                           % below
-   {\addtolength{\leftskip}{0.75in}    % body ``font''
-    \addtolength{\itemindent}{0.75in}} %
+   {}                                  % body ``font''
    {}                                  % indent
    {\bfseries}                         % head font
    {.}                                 % head punct
@@ -325,8 +324,12 @@
 \newtheorem{prop}[theorem]{Proposition}
 
 \theoremstyle{indenteddefinition}
-\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definitionhelper}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
+
+\newenvironment{definition}%
+  {\begin{leftbar}\begin{definitionhelper}}%
+  {\end{definitionhelper}\end{leftbar}}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
