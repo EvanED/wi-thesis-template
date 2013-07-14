@@ -325,11 +325,16 @@
 
 \theoremstyle{indenteddefinition}
 \newtheorem{definitionhelper}[theorem]{Definition}
+\newtheorem{propertyhelper}[theorem]{Property}
 \newtheorem{example}[theorem]{Example}
 
 \newenvironment{definition}%
   {\begin{leftbar}\begin{definitionhelper}}%
   {\end{definitionhelper}\end{leftbar}}
+
+\newenvironment{property}%
+  {\begin{leftbar}\begin{propertyhelper}}%
+  {\end{propertyhelper}\end{leftbar}}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
