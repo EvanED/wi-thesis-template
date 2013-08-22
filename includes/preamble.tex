@@ -222,10 +222,53 @@
     \vskip\onelineskip
     \raggedleft {\chaptitlefont ##1}\par\nobreak}}
 
+\makechapterstyle{nobars}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapnumfont}{\normalfont\HUGE\sffamily}
+  \renewcommand*{\chaptitlefont}{\normalfont\huge\sffamily}
+  \settowidth{\chapindent}{\chapnumfont 111}
+  \renewcommand*{\chapterheadstart}{\begingroup
+    \vspace*{\beforechapskip}%
+    \begin{adjustwidth}{}{}%
+    \end{adjustwidth}\endgroup}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \begin{adjustwidth}{}{}
+    \hfill
+    \raisebox{10mm}[0pt][0pt]{\chapnumfont \thechapter}%
+                              \hspace*{1em}
+    \end{adjustwidth}\vspace*{-3.0\onelineskip}}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \vskip\onelineskip
+    \raggedleft {\chaptitlefont ##1}\par\nobreak}}
+
+\newif\ifchapternonum
+\makechapterstyle{jenor}{
+  \setlength{\midchapskip}{-50pt}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}%
+    \fontshape{n}\fontsize{22}{30}\selectfont\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}%
+    \fontsize{0.92in}{0in}\selectfont\textcolor[rgb]{.64,.79,.87}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent%
+    \ifchapternonum%
+    \hfill{\chaptitlefont##1}\hfill
+    \else
+    {\chapnumfont\thechapter}\hfill\parbox[b]{0.9\textwidth}{\singlespacing\chaptitlefont##1}\hfill
+    \fi
+    \par\vskip2mm\hrule
+  }
+}
+\chapterstyle{jenor}
+
+% \chapterstyle{nobars}
 % \chapterstyle{deposit}
 % \chapterstyle{dash}
 % \chapterstyle{ell}
 % \chapterstyle{southall}
-\chapterstyle{nohangell}
 \pagestyle{deposit}
 
