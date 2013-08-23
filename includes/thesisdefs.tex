@@ -29,8 +29,8 @@
 \newcounter {lotpage}
 \newcounter {listofheading}
 
-\newcommand\@thesistitlemedskip{0.25in}
-\newcommand\@thesistitlebigskip{0.6in}
+\newcommand\@thesistitlemedskip{0.2in}
+\newcommand\@thesistitlebigskip{0.4in}
 \newcommand{\degree}[1]{\gdef\@degree{#1}}
 \newcommand{\project}{\gdef\@doctype{A masters project report}}
 \newcommand{\prelim}{\gdef\@doctype{A preliminary report}}
@@ -49,6 +49,17 @@
 
 \gdef\@department{(Electrical Engineering)} % Default is Electical Engineering
 
+\newcommand{\defensedate}{\gdef\@defensedate}
+\newcommand{\committeeMemberOne}{\gdef\@committeeMemberOne}
+\newcommand{\committeeMemberTwo}{\gdef\@committeeMemberTwo}
+\newcommand{\committeeMemberThree}{\gdef\@committeeMemberThree}
+\newcommand{\committeeMemberFour}{\gdef\@committeeMemberFour}
+\newcommand{\committeeMemberFive}{\gdef\@committeeMemberFive}
+
+\newcommand\@thesisdateskip{1.2in}
+\newcommand\@thesiscommitteeskip{0.8\baselineskip}
+\newcommand\@thesismemberskip{2em}
+
 \renewcommand{\maketitle}{%
   \begin{titlepage}
 %-----------------------------------------------------------------------------
@@ -57,21 +68,27 @@
 % -- your titlepage when converting from report style. -> from Purdue, but I
 %        left it here since it seems compatible with UW-Madison, Eric
 %-----------------------------------------------------------------------------
-    \def\thanks##1{\typeout{Warning: `thanks' deleted from thesis titlepage.}}
     \let\footnotesize\small \let\footnoterule\relax \setcounter{page}{1}
-    \vspace*{0.1in}
     \begin{center}
-      {\textbf{\expandafter\uppercase\expandafter{\@title}}} \\[\@thesistitlebigskip]
-       by \\[\@thesistitlemedskip]
+      {{\expandafter{\@title}}} \\[\@thesistitlebigskip]
+       By \\[\@thesistitlemedskip]
       \@author \\[\@thesistitlebigskip]
       \@doctype\ submitted in partial fulfillment of \\
       the requirements for the degree of\\[\@thesistitlebigskip]
       \@degree \\[\@thesistitlemedskip]
       \@department \\[\@thesistitlebigskip]
-      at the \\[\@thesistitlebigskip]
-      UNIVERSITY OF WISCONSIN--MADISON\\[\@thesistitlebigskip]
+      at the \\[\@thesistitlemedskip]
+      UNIVERSITY OF WISCONSIN--MADISON\\[\@thesistitlemedskip]
       \@date
     \end{center}
+  \vspace{\@thesisdateskip}
+  Date of final oral examination: \@defensedate \\[\@thesiscommitteeskip]
+  The dissertation is approved by the following members of the Final Oral Committee:\\
+  \hspace*{\@thesismemberskip}\@committeeMemberOne\\
+  \hspace*{\@thesismemberskip}\@committeeMemberTwo\\
+  \hspace*{\@thesismemberskip}\@committeeMemberThree\\
+  \hspace*{\@thesismemberskip}\@committeeMemberFour\\
+  \hspace*{\@thesismemberskip}\@committeeMemberFive
   \end{titlepage}
   \setcounter{footnote}{0}
   \setcounter{page}{1} %title page is NOT counted
@@ -451,6 +468,6 @@
   \sfcode`\.=1000\relax}
 \let\endthebibliography=\endlist
 
-
-
 \makeatother
+
+%\setlength{\footnotesep}{\baselineskip}
