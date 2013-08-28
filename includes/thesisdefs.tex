@@ -343,6 +343,8 @@
 \theoremstyle{indenteddefinition}
 \newtheorem{definitionhelper}[theorem]{Definition}
 \newtheorem{propertyhelper}[theorem]{Property}
+\newtheorem{lemmahelper}[theorem]{Lemma}
+\newtheorem{theoremhelper}[theorem]{Theorem}
 \newtheorem{example}[theorem]{Example}
 
 \newenvironment{definition}%
@@ -352,6 +354,15 @@
 \newenvironment{property}%
   {\begin{leftbar}\begin{propertyhelper}}%
   {\end{propertyhelper}\end{leftbar}}
+
+\newenvironment{Lemma}%
+  {\begin{leftbar}\begin{lemmahelper}}%
+  {\end{lemmahelper}\end{leftbar}}
+
+\newenvironment{Theorem}%
+  {\begin{leftbar}\begin{theoremhelper}}%
+  {\end{theoremhelper}\end{leftbar}}
+  
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
