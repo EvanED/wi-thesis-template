@@ -16,63 +16,147 @@
 % with this software (like your dissertation).
 %
 
-%%% You'll want ``oneside'' for the deposit version, but probably not for any versions that don't need to meet the UW requirements
-\documentclass[12pt,oneside,letterpaper]{memoir}
+% Copyright (c) 2013 Evan Driscoll
+%
+% In my evaluation the items remaining from Will's original version do not
+% withstand the test of copyright, and so as a result I don't think I need to
+% meet the sole criteria of the Latex PPL which I otherwise wouldn't -- I am
+% not renaming this file.
+
+%%% You'll want ``oneside'' for the deposit version, but probably not for any
+%%% versions that don't need to meet the UW requirements
+\documentclass[12pt,letterpaper,numbers,oneside]{memoir}
+%\documentclass[12pt,letterpaper,numbers]{memoir}
+
+%\def\ShortenThesis{y}
+
+
+%\newcommand{\TODO}[1]{\textbf{#1}\protect\marginnote{\large{[**]}}}
+\newcommand{\CHECK}[1]{#1} %\protect\marginnote{\large{[**]}}}
+
 
 \input{includes/preamble}
 \input{includes/defs}
+
+\usepackage[noline,noend,linesnumbered,algochapter]{algorithm2e}
+\usepackage{aliascnt}
+\usepackage{bookmark}
+\usepackage{mathtools}
+\usepackage{colortbl}
+
+\usepackage{lipsum}
+
+
+% Include last: only autonum should be after this (or hypdvips, but if you
+% need that you're doing something wrong)
+\usepackage[capitalize]{cleveref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% No \usepackage after this point %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \input{includes/thesisdefs}
-\svnidlong{$LastChangedBy$}{$LastChangedRevision$}{$LastChangedDate$}{$HeadURL: http://freevariable.com/dissertation/branches/diss-template/dissertation.tex $} 
 
-\clearpage\pagenumbering{roman}  % This makes the page numbers Roman (i, ii, etc)
 
-\title{Not Finished, But Abandoned}
-\author{Buckingham B.~Badger}
+% Some style options
+\hangcaption
+\captionnamefont{\small}
+\captiontitlefont{\small}
+
+\setsecnumdepth{subsection}
+\maxtocdepth{subsection}
+
+\crefname{algorithm}{Listing}{Listings}
+\Crefname{algorithm}{Listing}{Listings}
+\crefname{equation}{Equation}{Equations}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Number tables, theorems, and listings %%
+%% inline with figures,  instead of with %%
+%% their own,  parallel counter which is %%
+%% dumb.                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\let\c@table\@undefined
+\let\c@thm\@undefined
+\let\c@algocf\@undefined
+\makeatother
+
+\newaliascnt{table}{figure}
+\newaliascnt{thm}{figure}
+\newaliascnt{algocf}{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\AlCapSty}[1]{#1}
+\renewcommand{\AlCapFnt}{\small}
+\renewcommand*{\cftfigurename}{Figure\space}
+
+\renewcommand*{\cftfigurename}{Figure\space}
+\renewcommand*{\cfttablename}{Table\space}
+%\newcommand*{\cftalgocfname}{Listing\space}
+
+\overfullrule=2mm
+
+
+% Thesis options
+\title{The Effect of Carrying a Coconut on the Flight Speed of Swallows}
+\author{Imnow A. Doctor}
 \department{Computer Sciences}
+\date{2013}
 
-\date{2008}
+\defensedate{2/29/2012}
+\committeeMemberOne{(your adviser), Professor, Computer Sciences}
+\committeeMemberTwo{(member 2), Professor, Computer Sciences}
+\committeeMemberThree{(member 3), Associate Professor, Computer Sciences}
+\committeeMemberFour{(member 4), Assistant Professor, Computer Sciences}
+\committeeMemberFive{(member 5), Professor, Mathematics}
+
+
+%\includeonly{frontmatter/fm,xfa-pcca}
+
 
 \begin{document}
 
-%%% Uncomment the following if your .bib contains references that you will not 
-%%% explicitly cite, but that should be in the final bibliography:
-% \nocite{*}
-
-\ifpdf
-\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
-\else
-\DeclareGraphicsExtensions{.eps, .jpg}
-\fi
-
-\maketitle
-
-%% Add \part declarations if you want, but it's not necessary
+% Add \part declarations if you want, but it's not necessary
 %\part{Preliminaries}
 
-\include{frontmatter/frontmatter}
+\ifdef{\ShortenThesis}{
+}{
+  \include{frontmatter/fm}
+}
 
-%% Now include the tex files for each chapter, like so (I put these in separate dirs): 
-% \include{intro/intro}
-% \include{motivation/motivation}
-% \include{related/related}
 
-%% etc, etc.
+\chapter{Introduction}
+\lipsum
 
-%% Do you have appendices?  If so, add them here, just like chapters.
+\part{First Part}
+\chapter{Something Cool}
+\lipsum
+
+\chapter{Something Else Cool}
+\lipsum
+
+\part{Second Part}
+\chapter{Something Even Cooler}
+\lipsum
+
+% Ends the \part for purposes of the PDF TOC tree
+\bookmarksetup{startatroot}
+\chapter{Conclusions}
+\lipsum
+
 % \begin{appendices}
 % \include{backmatter/appendix1}
 % \end{appendices}
 
-%% Are you a big nerd with a colophon?  Add it here.
-\begin{colophon}
-\input{backmatter/colophon}
-\end{colophon}
-
 %% McBride is a very nice style (some version is included in this distribution)
-\bibliographystyle{mcbride}
-\bibliography{your-bib-file}
+%\bibliographystyle{plainnat}
+%\begin{multicols}{2}
+%{\tiny
+%\bibliography{../../bibliography/evan.bib,../../bibliography/df.bib,../../bibliography/mab.bib}
+%}
+%\end{multicols}
 
-%% Want an index?  Neither did I.
-%\printindex
 
 \end{document}
